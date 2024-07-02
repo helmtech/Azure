@@ -1,6 +1,6 @@
 // Parameters
 param location string = resourceGroup().location
-param storageAccountName = 'sadevbrifrisk'
+param storageAccountName string
 param skuName string = 'Standard_LRS'
 param kind string = 'StorageV2'
 
@@ -31,11 +31,12 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2021-09-01' = {
       virtualNetworkRules: []
       ipRules: [
         {
-          value: '147.180.092' // 
+          value: 'YOUR_IP_ADDRESS' // Replace with your specific IP address or range
         }
       ]
       defaultAction: 'Deny'
     }
+    allowBlobPublicAccess: false // Deny public access to blobs
   }
 }
 
