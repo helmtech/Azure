@@ -13,7 +13,9 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2021-09-01' = {
   }
   kind: kind
   properties: {
-    accessTier: 'Hot'
+    minimumTlsVersion: 'TLS1_2'
+    allowBlobPublicAccess: false
+    isHnsEnabled: true
     supportsHttpsTrafficOnly: true
     encryption: {
       services: {
@@ -36,7 +38,6 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2021-09-01' = {
       ]
       defaultAction: 'Deny'
     }
-    allowBlobPublicAccess: false // Deny public access to blobs
   }
 }
 
